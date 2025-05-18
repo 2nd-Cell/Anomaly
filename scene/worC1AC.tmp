@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvjfl1fdyg1s8"]
+
+[ext_resource type="PackedScene" uid="uid://j2163lfiqocf" path="res://scene/player.tscn" id="1_da537"]
+[ext_resource type="Script" path="res://script/spawn_holder.gd" id="3_iwbp0"]
+
+[sub_resource type="TileSet" id="TileSet_sw66g"]
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wkhtr"]
+vertices = PackedVector2Array(1140.98, 8.96875, 1140.02, 639, 10, 639, 10, 6.02344)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, -4, 1151, -1, 1150, 649, 0, 649)])
+
+[node name="Prologue" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, -2)
+tile_set = SubResource("TileSet_sw66g")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(0, -2)
+navigation_polygon = SubResource("NavigationPolygon_wkhtr")
+
+[node name="player" parent="NavigationRegion2D" instance=ExtResource("1_da537")]
+position = Vector2(467, 65)
+
+[node name="SpawnHolder" type="Node2D" parent="."]
+position = Vector2(536, 244)
+script = ExtResource("3_iwbp0")
+
+[node name="Spawner1" type="Node2D" parent="SpawnHolder"]
+position = Vector2(61, -462)
+
+[node name="Spawner2" type="Node2D" parent="SpawnHolder"]
+position = Vector2(890, 77)
+
+[node name="Spawner3" type="Node2D" parent="SpawnHolder"]
+position = Vector2(875, -455)
+
+[node name="Spawner4" type="Node2D" parent="SpawnHolder"]
+position = Vector2(869, 639)
+
+[node name="Spawner5" type="Node2D" parent="SpawnHolder"]
+position = Vector2(-767, 598)
+
+[node name="Spawner6" type="Node2D" parent="SpawnHolder"]
+position = Vector2(-748, -445)
+
+[node name="Spawner7" type="Node2D" parent="SpawnHolder"]
+position = Vector2(34, 591)
+
+[node name="Spawner8" type="Node2D" parent="SpawnHolder"]
+position = Vector2(-759, 62)
+
+[node name="Interval" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Interval" to="SpawnHolder" method="_on_interval_timeout"]

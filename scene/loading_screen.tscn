@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf3dw063b2nhw"]
+
+[ext_resource type="Script" path="res://script/loading_screen.gd" id="1_f4e4d"]
+
+[node name="loading_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f4e4d")
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(0.039806, 0, 0.695313, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="countDown" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -101.0
+offset_top = -58.0
+offset_right = -61.0
+offset_bottom = -35.0
+grow_horizontal = 0
+grow_vertical = 0

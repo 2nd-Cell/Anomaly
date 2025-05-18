@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://beejd3pd6d7sf"]
+
+[ext_resource type="Script" path="res://script/home_screen.gd" id="1_fu56i"]
+[ext_resource type="Texture2D" uid="uid://cf7kp56m52n0w" path="res://ui/background/2206_w023_n003_2471b_p1_2471.jpg" id="2_g4pcq"]
+[ext_resource type="FontFile" uid="uid://cxafw8qu7hslx" path="res://ui/font/peach_days/Peach Days.ttf" id="2_yfi1g"]
+[ext_resource type="StyleBox" uid="uid://cnwwpbpgc3hj6" path="res://ui/button/btn normal.tres" id="3_103wk"]
+[ext_resource type="StyleBox" uid="uid://8jt4j2qtk0sj" path="res://ui/button/btn pressed.tres" id="4_aw3em"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8q0ta"]
+texture = ExtResource("2_g4pcq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0xhh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="home_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fu56i")
+
+[node name="bg" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8q0ta")
+
+[node name="START" type="Button" parent="."]
+layout_mode = 0
+offset_left = 953.0
+offset_top = 546.0
+offset_right = 1126.0
+offset_bottom = 615.0
+theme_override_fonts/font = ExtResource("2_yfi1g")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_n0xhh")
+theme_override_styles/hover = ExtResource("3_103wk")
+theme_override_styles/pressed = ExtResource("3_103wk")
+theme_override_styles/normal = ExtResource("4_aw3em")
+text = "  START  "
+
+[node name="SHOP" type="Button" parent="."]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 551.0
+offset_right = 182.0
+offset_bottom = 620.0
+theme_override_fonts/font = ExtResource("2_yfi1g")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_n0xhh")
+theme_override_styles/hover = ExtResource("3_103wk")
+theme_override_styles/pressed = ExtResource("3_103wk")
+theme_override_styles/normal = ExtResource("4_aw3em")
+text = "SHOP"
+
+[connection signal="pressed" from="START" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="START" to="." method="_on_btn_pressed"]
+[connection signal="pressed" from="SHOP" to="." method="_on_btn_pressed"]
