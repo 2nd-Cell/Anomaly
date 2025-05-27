@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://wv1f1pyvfmis"]
+
+[ext_resource type="Script" path="res://script/npc.gd" id="1_4hg1v"]
+[ext_resource type="Texture2D" uid="uid://c3voijdpvps3j" path="res://icon.svg" id="2_ahoqf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhy00"]
+size = Vector2(40, 39.5)
+
+[node name="npc" type="CharacterBody2D"]
+collision_mask = 9
+script = ExtResource("1_4hg1v")
+speed = 100
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.941176, 0, 0.572549)
+position = Vector2(-1, -0.500002)
+scale = Vector2(0.3125, 0.304687)
+texture = ExtResource("2_ahoqf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.25)
+shape = SubResource("RectangleShape2D_vhy00")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

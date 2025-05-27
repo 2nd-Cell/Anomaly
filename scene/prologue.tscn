@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvjfl1fdyg1s8"]
+
+[ext_resource type="Script" path="res://script/spawn_holder.gd" id="1_2q7e8"]
+[ext_resource type="Texture2D" uid="uid://c12l42f8wjii7" path="res://ui/background/download (1).jpeg" id="2_lrhou"]
+[ext_resource type="PackedScene" uid="uid://j2163lfiqocf" path="res://scene/player.tscn" id="4_7hli8"]
+[ext_resource type="PackedScene" uid="uid://yaraaoc0v7mq" path="res://scene/area/area[0].tscn" id="5_4wb0g"]
+[ext_resource type="PackedScene" uid="uid://wv1f1pyvfmis" path="res://scene/npc.tscn" id="5_tky7d"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wkhtr"]
+vertices = PackedVector2Array(1524, 759, 4.00781, 759, 4.97656, 17.9531, 1524, 11.0391)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-5, 8, 1534, 1, 1534, 769, -6, 769)])
+
+[node name="Prologue" type="Node2D"]
+script = ExtResource("1_2q7e8")
+
+[node name="Download(1)" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(573.5, 306.5)
+scale = Vector2(3.81667, 3.81548)
+texture = ExtResource("2_lrhou")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+position = Vector2(5, 0)
+navigation_polygon = SubResource("NavigationPolygon_wkhtr")
+
+[node name="player" parent="NavigationRegion2D" instance=ExtResource("4_7hli8")]
+position = Vector2(276, 230)
+
+[node name="SpawnHolder" type="Node2D" parent="."]
+
+[node name="Spawner1" type="Node2D" parent="SpawnHolder"]
+position = Vector2(760, -211)
+
+[node name="Spawner2" type="Node2D" parent="SpawnHolder"]
+position = Vector2(1732, 343)
+
+[node name="Spawner3" type="Node2D" parent="SpawnHolder"]
+position = Vector2(1695, 958)
+
+[node name="Spawner4" type="Node2D" parent="SpawnHolder"]
+position = Vector2(1727, -213)
+
+[node name="Spawner5" type="Node2D" parent="SpawnHolder"]
+position = Vector2(729, 954)
+
+[node name="Spawner6" type="Node2D" parent="SpawnHolder"]
+position = Vector2(-194, -190)
+
+[node name="Spawner7" type="Node2D" parent="SpawnHolder"]
+position = Vector2(-206, 942)
+
+[node name="Spawner8" type="Node2D" parent="SpawnHolder"]
+position = Vector2(-240, 360)
+
+[node name="Interval" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="npc" parent="." instance=ExtResource("5_tky7d")]
+position = Vector2(363, 213)
+speed = 50
+
+[node name="area[0]" parent="." instance=ExtResource("5_4wb0g")]
+z_index = -1
+
+[connection signal="timeout" from="Interval" to="." method="_on_interval_timeout"]

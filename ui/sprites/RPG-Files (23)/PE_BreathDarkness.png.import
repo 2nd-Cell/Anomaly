@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://b0ax3els26lab"
+path="res://.godot/imported/PE_BreathDarkness.png-b98a7c18e586b399a9f214bd6790595d.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://ui/sprites/RPG-Files (23)/PE_BreathDarkness.png"
+dest_files=["res://.godot/imported/PE_BreathDarkness.png-b98a7c18e586b399a9f214bd6790595d.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

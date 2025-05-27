@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 		var collision = get_slide_collision(i)
 		if collision.get_collider().get_meta("Enemy", false):
 			collision.get_collider().call("take_damage", damage)
-			queue_free()
+		queue_free()
 	
 	move_and_slide()
 
@@ -32,8 +32,3 @@ func on_enemy_hit():
 	
 	if current_pierce_count >= max_pierce:
 		queue_free()
-
-
-func _on_timer_timeout() -> void:
-	#collision.disabled = false
-	pass

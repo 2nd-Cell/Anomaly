@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://j2163lfiqocf"]
+[gd_scene load_steps=11 format=3 uid="uid://j2163lfiqocf"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_2kc55"]
 [ext_resource type="Texture2D" uid="uid://cgt61kg07ywyw" path="res://ui/sprites/trial_player.png" id="2_jis04"]
 [ext_resource type="Script" path="res://script/player_weapon.gd" id="3_6soci"]
+[ext_resource type="PackedScene" uid="uid://clwjvj5cxto6n" path="res://scene/health_bar.tscn" id="4_i0vyb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wnvbc"]
 radius = 7.0
@@ -42,18 +43,15 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hx42v"]
-bg_color = Color(0.831768, 0.875, 0.829143, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.664063, 0.664063, 0.664063, 1)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pohnm"]
+radius = 7.0
+height = 26.0
 
 [node name="player" type="CharacterBody2D"]
-collision_mask = 4
+collision_mask = 13
 script = ExtResource("1_2kc55")
 SPEED = 100.0
+knockback_multiplier = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_wnvbc")
@@ -68,18 +66,16 @@ firing_position = NodePath("../Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -17.0
-offset_top = -21.0
+[node name="health_bar" parent="." instance=ExtResource("4_i0vyb")]
+offset_left = -19.0
+offset_top = -20.0
 offset_right = 18.0
-offset_bottom = -13.0
+offset_bottom = -16.0
 
-[node name="Panel" type="Panel" parent="Control"]
-layout_mode = 0
-offset_left = -2.0
-offset_top = 3.0
-offset_right = 37.0
-offset_bottom = 7.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_hx42v")
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_pohnm")

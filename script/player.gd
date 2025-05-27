@@ -5,8 +5,11 @@ extends CharacterBody2D
 var PlayerState = "idle"
 var aim_position : Vector2 = Vector2(1, 0)
 
-@export var knockback_multiplier := 0
+@export var knockback_multiplier := 1500
 var knockback: Vector2 = Vector2(0,0)
+
+@export var health = 100
+@onready var healthbar = $health_bar
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -25,7 +28,8 @@ func _physics_process(delta: float) -> void:
 	
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
-		knockback += collision.get_normal()
+		if collision.get_collider().get_meta("Enemy", false):
+			knockback += collision.get_normal()
 	knockback = knockback * knockback_multiplier
 
 func PlayerStateController(state = "idle"):
@@ -39,3 +43,5 @@ func PlayerStateController(state = "idle"):
 func _ready() -> void:
 	AnimPlayer.play("default")
 	Global.player_position = position
+	
+	healthbar.init_health(health)

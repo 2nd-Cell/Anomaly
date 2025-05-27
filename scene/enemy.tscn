@@ -1,16 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://cndyihi4jfvj6"]
+[gd_scene load_steps=5 format=3 uid="uid://cndyihi4jfvj6"]
 
 [ext_resource type="Script" path="res://script/enemy.gd" id="1_vcpmt"]
 [ext_resource type="Texture2D" uid="uid://c3voijdpvps3j" path="res://icon.svg" id="2_gnnhm"]
+[ext_resource type="PackedScene" uid="uid://clwjvj5cxto6n" path="res://scene/health_bar.tscn" id="3_uruup"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kbee"]
 
 [node name="enemy_joe" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 15
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_vcpmt")
+speed = 66.0
+knockback_resistance = 2
 metadata/Enemy = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -30,5 +33,11 @@ debug_enabled = true
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="health_bar" parent="." instance=ExtResource("3_uruup")]
+offset_left = -21.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = -13.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
