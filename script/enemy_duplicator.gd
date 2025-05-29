@@ -10,10 +10,12 @@ signal Death
 var knockback: Vector2 = Vector2.ZERO
 var knockback_timer: float = 0.0
 
-@export var health = 100
+@export var health = 10
 @onready var healthbar = $health_bar
 var is_emitted_death = false
 
+
+var child = preload("res://scene/enemies/enemy_duplicator_base.tscn")
 var damage = 10
 
 func _ready() -> void:

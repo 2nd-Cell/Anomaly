@@ -6,13 +6,16 @@ extends Node2D
 func num_enemy_calc_fn(lvl):
 	return lvl*10
 #the monster we will be spawning in. 
-@onready var monster=preload("res://scene/enemy.tscn")
+@onready var monster_arr := [preload("res://scene/enemies/enemy_duplicator_main.tscn"), preload("res://scene/enemies/enemy_ranged.tscn"), preload("res://scene/enemies/enemy.tscn")]
 #A random number genrerator to spawn from alternating spawn points.
 @onready var rand=RandomNumberGenerator.new()
 @onready var timer = $Interval
 @onready var dead_enemies=0
 var skip_spawn := false
 var wave_enemies = 0
+
+func _ready():
+	add_to_group("spawner", true)
 
 func run_timer(time: int) -> void:
 	if not timer.is_stopped():
@@ -24,12 +27,12 @@ func enemy_death():
 	dead_enemies+=1
 	#print(dead_enemies==num_enemy_calc_fn(current_level), "||", dead_enemies, "||", num_enemy_calc_fn(current_level))
 	if dead_enemies==wave_enemies:
-		print("clear via clean")
 		run_timer(10)
 
 func spawn_enemies(num: int)->void:
 	for i in range(num):
-		var m = monster.instantiate()
+		#rand.
+		var m = monster_arr.pick_random().instantiate()
 		#we check the amount of children on our spawn holder 
 		var spawn_length = $SpawnHolder.get_child_count()-1
 		# then make a random number in that range
@@ -44,12 +47,7 @@ func spawn_enemies(num: int)->void:
 		await get_tree().create_timer(2.0).timeout
 	run_timer(60)
 	
-
-func _process(delta: float) -> void:
-	print(timer.time_left, "||", dead_enemies, "||", wave_enemies)
-
 func _on_interval_timeout() -> void:
-	print("timeout")
 	current_level+=1
 	wave_enemies = num_enemy_calc_fn(current_level) + wave_enemies - dead_enemies
 	dead_enemies = 0

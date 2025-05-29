@@ -52,6 +52,7 @@ collision_mask = 13
 script = ExtResource("1_2kc55")
 SPEED = 100.0
 knockback_multiplier = 500
+metadata/Player = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_wnvbc")
@@ -79,3 +80,5 @@ zoom = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_pohnm")
+
+[node name="Timer" type="Timer" parent="."]

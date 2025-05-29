@@ -10,3 +10,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func Switch_Screen(scene: String):
+	var loading_screen = load(scene_name) # Returns PackedScene
+	get_tree().change_scene_to_packed(loading_screen)

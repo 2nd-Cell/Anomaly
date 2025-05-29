@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dal7jx1ppym8p"]
+
+[ext_resource type="Script" path="res://script/enemy_bullet.gd" id="1_mei0f"]
+[ext_resource type="Texture2D" uid="uid://inkx1p5qe8lw" path="res://ui/bullet/All_Fire_Bullet_Pixel_16x16.png" id="2_73tkl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijas0"]
+atlas = ExtResource("2_73tkl")
+region = Rect2(464, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4c45e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijas0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_blb30"]
+radius = 4.0
+height = 18.0
+
+[node name="bullet" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 9
+script = ExtResource("1_mei0f")
+metadata/Bullet = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 0.113725, 0.290196, 1)
+position = Vector2(-0.5, -0.5)
+scale = Vector2(1.0625, 1.0625)
+sprite_frames = SubResource("SpriteFrames_4c45e")
+frame_progress = 0.763651
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_blb30")
+one_way_collision_margin = 5.4

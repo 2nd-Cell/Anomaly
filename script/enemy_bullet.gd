@@ -1,4 +1,4 @@
-class_name Bullet
+class_name EnemyBullet
 extends CharacterBody2D
 
 @export var speed := 300.0
@@ -22,9 +22,10 @@ func _physics_process(delta: float) -> void:
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		if max_pierce > 0:
-			if collision.get_collider().get_meta("Enemy", false):
+			if collision.get_collider().get_meta("Player", false):
+				pass
 				collision.get_collider().call("take_damage", damage)
-				collision.get_collider().apply_knockback(direction, velocity.length(), 0.12)
+				#collision.get_collider().apply_knockback(direction, velocity.length(), 0.12)
 			max_pierce -= 1
 		
 		if max_pierce <= 0:

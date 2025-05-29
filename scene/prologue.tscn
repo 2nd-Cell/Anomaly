@@ -22,7 +22,6 @@ scale = Vector2(3.81667, 3.81548)
 texture = ExtResource("2_lrhou")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 position = Vector2(5, 0)
 navigation_polygon = SubResource("NavigationPolygon_wkhtr")
 
