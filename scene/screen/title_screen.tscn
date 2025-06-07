@@ -1,0 +1,117 @@
+[gd_scene load_steps=9 format=3 uid="uid://cw34wh78hylw1"]
+
+[ext_resource type="Script" path="res://script/screen/title_screen.gd" id="1_26ft4"]
+[ext_resource type="Texture2D" uid="uid://cpdne2qacnipo" path="res://ui/background/rm311-ploy-10b.jpg" id="2_xfnp6"]
+[ext_resource type="FontFile" uid="uid://dk803q0qxv68l" path="res://ui/font/xirod/Xirod.otf" id="3_o3ax7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rblpw"]
+texture = ExtResource("2_xfnp6")
+
+[sub_resource type="Animation" id="Animation_e0niw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vs81m"]
+resource_name = "fading"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.933333, 1.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kah85"]
+resource_name = "fading (short)"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_njklj"]
+_data = {
+"RESET": SubResource("Animation_e0niw"),
+"fading": SubResource("Animation_vs81m"),
+"fading (short)": SubResource("Animation_kah85")
+}
+
+[node name="title_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_26ft4")
+
+[node name="bg" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rblpw")
+
+[node name="touch" type="Button" parent="bg"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -12.5
+offset_right = 215.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.566623, 0.451453, 1, 0.839216)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_o3ax7")
+theme_override_font_sizes/font_size = 20
+text = "Touch anywhere to Start"
+
+[node name="fading" type="AnimationPlayer" parent="."]
+root_node = NodePath("../text")
+libraries = {
+"": SubResource("AnimationLibrary_njklj")
+}
+
+[connection signal="pressed" from="bg/touch" to="." method="_on_touch_pressed"]
+[connection signal="animation_finished" from="fading" to="." method="_on_fading_animation_finished"]

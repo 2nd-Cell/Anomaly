@@ -12,7 +12,8 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	Global.scene_name = "res://scene/area/area[0].tscn"
+	TransitionScreen.transition()
+	await TransitionScreen.on_transition_finished
+	var next_scene = load("res://scene/chapter/prologue.tscn")
 	
-	var loading_screen = load("res://scene/loading_screen.tscn")
-	get_tree().change_scene_to_packed(loading_screen)
+	get_tree().change_scene_to_packed(next_scene)

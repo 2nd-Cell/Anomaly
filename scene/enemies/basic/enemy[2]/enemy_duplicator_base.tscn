@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxb04n5ri85n0"]
 
-[ext_resource type="Script" path="res://script/enemy_duplicator.gd" id="1_uth7u"]
-[ext_resource type="Texture2D" uid="uid://c3voijdpvps3j" path="res://icon.svg" id="2_innq6"]
-[ext_resource type="PackedScene" uid="uid://clwjvj5cxto6n" path="res://scene/health_bar.tscn" id="3_h8qao"]
+[ext_resource type="Script" path="res://script/enemies/basic/enemy[2]/enemy_duplicator.gd" id="1_2q30n"]
+[ext_resource type="Texture2D" uid="uid://c3voijdpvps3j" path="res://icon.svg" id="2_l588k"]
+[ext_resource type="PackedScene" uid="uid://clwjvj5cxto6n" path="res://scene/ui/health_bar.tscn" id="3_gh8as"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kbee"]
 
@@ -11,17 +11,17 @@ collision_layer = 4
 collision_mask = 15
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_uth7u")
+script = ExtResource("1_2q30n")
 metadata/Enemy = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6kbee")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(0.490196, 0.266667, 0.639216, 1)
+self_modulate = Color(0.572901, 0.432164, 0.17668, 1)
 position = Vector2(3.8147e-06, -3.8147e-06)
 scale = Vector2(0.15625, 0.15625)
-texture = ExtResource("2_innq6")
+texture = ExtResource("2_l588k")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 2.0
@@ -33,7 +33,7 @@ debug_enabled = true
 wait_time = 0.1
 autostart = true
 
-[node name="health_bar" parent="." instance=ExtResource("3_h8qao")]
+[node name="health_bar" parent="." instance=ExtResource("3_gh8as")]
 offset_left = -21.0
 offset_top = -18.0
 offset_right = 20.0

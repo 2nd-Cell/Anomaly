@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://15a4nj877g5q" path="res://ui/sprites/RPG-Files (19)/!fsm_Furniture01n.png" id="5_xstdq"]
 [ext_resource type="Texture2D" uid="uid://x03hemc2ywsc" path="res://ui/sprites/RPG-Files (1)/fsm_D_Inside01n_B.png" id="6_wgkhb"]
 [ext_resource type="Texture2D" uid="uid://7kibwhrerduh" path="res://ui/sprites/RPG-Files (1)/fsm_C_Inside01n_D1.png" id="7_7api4"]
-[ext_resource type="PackedScene" uid="uid://j2163lfiqocf" path="res://scene/player.tscn" id="9_1q5c0"]
+[ext_resource type="PackedScene" uid="uid://j2163lfiqocf" path="res://scene/player/player.tscn" id="9_1q5c0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yjuis"]
 texture = ExtResource("1_01y17")

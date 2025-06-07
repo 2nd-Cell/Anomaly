@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://j2163lfiqocf"]
+
+[ext_resource type="Script" path="res://script/player/player.gd" id="1_2kc55"]
+[ext_resource type="Texture2D" uid="uid://cgt61kg07ywyw" path="res://ui/sprites/trial_player.png" id="2_jis04"]
+[ext_resource type="Script" path="res://script/player/player_weapon.gd" id="3_1eaxr"]
+[ext_resource type="PackedScene" uid="uid://clwjvj5cxto6n" path="res://scene/ui/health_bar.tscn" id="4_i0vyb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wnvbc"]
+radius = 7.0
+height = 24.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwiv1"]
+atlas = ExtResource("2_jis04")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obvs2"]
+atlas = ExtResource("2_jis04")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nx7y"]
+atlas = ExtResource("2_jis04")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d3tdk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwiv1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obvs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nx7y")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pohnm"]
+radius = 7.0
+height = 26.0
+
+[node name="player" type="CharacterBody2D"]
+collision_mask = 13
+script = ExtResource("1_2kc55")
+SPEED = 100.0
+knockback_multiplier = 500
+metadata/Player = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_wnvbc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_d3tdk")
+
+[node name="player_weapon" type="Node2D" parent="." node_paths=PackedStringArray("firing_position")]
+script = ExtResource("3_1eaxr")
+firing_position = NodePath("../Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="health_bar" parent="." instance=ExtResource("4_i0vyb")]
+offset_left = -19.0
+offset_top = -20.0
+offset_right = 18.0
+offset_bottom = -16.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_pohnm")
+
+[node name="Timer" type="Timer" parent="."]

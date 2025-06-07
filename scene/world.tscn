@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cvjfl1fdyg1s8"]
 
-[ext_resource type="PackedScene" uid="uid://j2163lfiqocf" path="res://scene/player.tscn" id="1_da537"]
+[ext_resource type="PackedScene" uid="uid://j2163lfiqocf" path="res://scene/player/player.tscn" id="1_da537"]
 [ext_resource type="Texture2D" uid="uid://c12l42f8wjii7" path="res://ui/background/download (1).jpeg" id="3_5cvlq"]
-[ext_resource type="Script" path="res://script/spawn_holder.gd" id="3_iwbp0"]
+[ext_resource type="Script" path="res://script/chapter/spawn_holder.gd" id="3_iwbp0"]
 
 [sub_resource type="TileSet" id="TileSet_sw66g"]
 physics_layer_0/collision_layer = 1

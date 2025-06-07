@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://crc4kify4ns83"]
+
+[ext_resource type="Script" path="res://script/ui/wave.gd" id="1_nnpa4"]
+
+[node name="wave" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nnpa4")
+
+[node name="wave_text" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Wave - "
+
+[node name="wave_num" type="Label" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_right = 95.0
+offset_bottom = 23.0
+text = "00"
