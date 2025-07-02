@@ -8,6 +8,8 @@ class_name approach
 @export var reach := 100
 var distance
 
+@onready var target_state = $"../target"
+
 func _ready() -> void:
 	pass
 
@@ -20,16 +22,15 @@ func exit():
 func update(delta: float):
 	pass
 	
-func physics_update(delta: float, velocity:Vector2):
+func physics_update(delta: float):
 	
 	distance = Global.player_position.distance_to(owner.global_position)
 	
 	var dir : Vector2
+	var velocity := Vector2.ZERO
 	
 	if distance <= reach:
-		velocity = Vector2(0,0)
-		dir = Vector2(0,0)
-		#transitioned.emit(self, "target")
+		transitioned.emit(self, target_state)
 		print("Within reach - stopping")
 		
 	else:
@@ -38,8 +39,9 @@ func physics_update(delta: float, velocity:Vector2):
 		make_path(Global.player_position)
 		print("Approaching player")
 	
-	print(velocity, " ||  ",distance, " || ",reach )
-	return velocity
+	#print(velocity, " ||  ",distance, " || ",reach )
+	$"../..".velocity = velocity
+	$"../..".move_and_slide()
 
 func make_path(pos: Vector2) -> void:
 	nav_agent.target_position = pos

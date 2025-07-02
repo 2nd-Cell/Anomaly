@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dhs7e0mikoiax"]
 
-[ext_resource type="Script" path="res://script/enemies/intermediate/snatcher/snatcher[1].gd" id="1_xgibk"]
+[ext_resource type="Script" path="res://script/enemies/intermediate/snatcher/snatcher.gd" id="1_xgibk"]
 [ext_resource type="Texture2D" uid="uid://c3voijdpvps3j" path="res://icon.svg" id="2_cu7ky"]
 [ext_resource type="PackedScene" uid="uid://clwjvj5cxto6n" path="res://scene/ui/health_bar.tscn" id="3_5mp36"]
 [ext_resource type="Script" path="res://script/utility/state_machine.gd" id="4_n7q7l"]
@@ -110,3 +110,4 @@ script = ExtResource("8_wj74k")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="animation_finished" from="state_machine/target/AnimationPlayer" to="state_machine/target" method="_on_animation_player_animation_finished"]
