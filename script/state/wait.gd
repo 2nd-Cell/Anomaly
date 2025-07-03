@@ -1,7 +1,7 @@
 extends state
 class_name wait
 
-@onready var approach_state = $"../approach"
+@export var next_state : state
 
 func enter():
 	$Timer.start()
@@ -17,4 +17,4 @@ func physics_update(delta: float):
 
 
 func _on_timer_timeout() -> void:
-	transitioned.emit(self, approach_state)
+	transitioned.emit(self, next_state)

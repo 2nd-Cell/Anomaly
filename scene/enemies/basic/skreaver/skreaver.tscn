@@ -1,51 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://cndyihi4jfvj6"]
+[gd_scene load_steps=7 format=3 uid="uid://cndyihi4jfvj6"]
 
 [ext_resource type="Script" path="res://script/enemies/basic/skreaver/skreaver.gd" id="1_6xmbr"]
 [ext_resource type="Texture2D" uid="uid://c3voijdpvps3j" path="res://icon.svg" id="2_5c25l"]
 [ext_resource type="PackedScene" uid="uid://clwjvj5cxto6n" path="res://scene/ui/health_bar.tscn" id="3_2vq8q"]
 [ext_resource type="Script" path="res://script/utility/state_machine.gd" id="4_k4xta"]
-[ext_resource type="Script" path="res://script/state/approach.gd" id="5_ryheg"]
-[ext_resource type="Script" path="res://script/state/target.gd" id="6_tgbqg"]
-[ext_resource type="Script" path="res://script/state/tackle.gd" id="7_dcr25"]
-[ext_resource type="Script" path="res://script/state/wait.gd" id="8_0dt8l"]
+[ext_resource type="Script" path="res://script/state/pursue.gd" id="7_ff8sh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kbee"]
-
-[sub_resource type="Animation" id="Animation_kct2f"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.539791, 0.0944763, 0.83774, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_0euow"]
-resource_name = "targetting"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0666667, 0.933333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.539791, 0.0944763, 0.83774, 1), Color(0.454524, 0.454524, 0.454524, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_x8105"]
-_data = {
-"RESET": SubResource("Animation_kct2f"),
-"targetting": SubResource("Animation_0euow")
-}
 
 [node name="skreaver" type="CharacterBody2D"]
 collision_layer = 4
@@ -59,7 +20,6 @@ metadata/Enemy = true
 shape = SubResource("RectangleShape2D_6kbee")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(0.539791, 0.0944763, 0.83774, 1)
 position = Vector2(3.8147e-06, -3.8147e-06)
 scale = Vector2(0.15625, 0.15625)
 texture = ExtResource("2_5c25l")
@@ -82,30 +42,9 @@ offset_bottom = -13.0
 
 [node name="state_machine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_k4xta")
-initial_state = NodePath("approach")
+initial_state = NodePath("pursue")
 
-[node name="approach" type="Node" parent="state_machine"]
-script = ExtResource("5_ryheg")
-
-[node name="target" type="Node" parent="state_machine"]
-script = ExtResource("6_tgbqg")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="state_machine/target"]
-root_node = NodePath("../../..")
-libraries = {
-"": SubResource("AnimationLibrary_x8105")
-}
-
-[node name="tackle" type="Node" parent="state_machine"]
-script = ExtResource("7_dcr25")
-
-[node name="wait" type="Node" parent="state_machine"]
-script = ExtResource("8_0dt8l")
-
-[node name="Timer" type="Timer" parent="state_machine/wait"]
-wait_time = 2.0
-one_shot = true
+[node name="pursue" type="Node" parent="state_machine"]
+script = ExtResource("7_ff8sh")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="animation_finished" from="state_machine/target/AnimationPlayer" to="state_machine/target" method="_on_animation_player_animation_finished"]
-[connection signal="timeout" from="state_machine/wait/Timer" to="state_machine/wait" method="_on_timer_timeout"]

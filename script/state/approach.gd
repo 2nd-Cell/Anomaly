@@ -7,7 +7,7 @@ class_name approach
 @export var approaching_reach := 100
 var distance
 
-@onready var target_state = $"../target"
+@export var next_state : state
 
 func _ready() -> void:
 	pass
@@ -29,7 +29,7 @@ func physics_update(delta: float):
 	var velocity := Vector2.ZERO
 	
 	if distance <= approaching_reach:
-		transitioned.emit(self, target_state)
+		transitioned.emit(self, next_state)
 		
 	else:
 		dir = owner.to_local(nav_agent.get_next_path_position()).normalized()

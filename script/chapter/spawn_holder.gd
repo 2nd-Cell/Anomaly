@@ -5,7 +5,7 @@ extends Node2D
 func num_enemy_calc_fn(lvl):
 	return lvl*10
 #the monster we will be spawning in. 
-@onready var monster_arr := [preload("res://scene/enemies/basic/enemy[2]/enemy_duplicator_main.tscn"), preload("res://scene/enemies/basic/enemy[1]/enemy_ranged.tscn"), preload("res://scene/enemies/basic/enemy[0]/enemy.tscn"), preload("res://scene/enemies/intermediate/snatcher/snatcher.tscn")]
+@onready var monster_arr := [preload("res://scene/enemies/basic/enemy[2]/enemy_duplicator_main.tscn"), preload("res://scene/enemies/basic/enemy[1]/enemy_ranged.tscn"), preload("res://scene/enemies/basic/skreaver/skreaver.tscn"), preload("res://scene/enemies/intermediate/snatcher/snatcher.tscn")]
 #A random number genrerator to spawn from alternating spawn points.
 @onready var rand=RandomNumberGenerator.new()
 @onready var timer = $Interval

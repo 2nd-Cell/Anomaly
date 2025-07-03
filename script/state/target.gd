@@ -1,7 +1,7 @@
 extends state
 class_name target
 
-@onready var tackle_state = $"../tackle"
+@export var next_state : state
 
 func enter():
 	pass
@@ -17,4 +17,4 @@ func physics_update(delta: float):
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "targetting":
-		transitioned.emit(self, tackle_state)
+		transitioned.emit(self, next_state)

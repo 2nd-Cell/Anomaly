@@ -1,7 +1,7 @@
 extends state
 class_name tackle
 
-@onready var wait_state = $"../wait"
+@export var next_state : state
 
 var target_position
 var start_position
@@ -28,7 +28,7 @@ func physics_update(delta: float):
 	var velocity := Vector2.ZERO
 	
 	if distance >= tackle_reach:
-		transitioned.emit(self, wait_state)
+		transitioned.emit(self, next_state)
 		
 	else:
 		velocity = dir * tackle_speed
