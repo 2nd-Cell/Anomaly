@@ -1,11 +1,10 @@
 extends state
 class_name approach
 
-@export var speed := 50.0
-@onready var player: Node2D = $"../player"
+@export var approaching_speed := 50.0
 @onready var nav_agent: NavigationAgent2D = $"../../NavigationAgent2D"
 
-@export var reach := 100
+@export var approaching_reach := 100
 var distance
 
 @onready var target_state = $"../target"
@@ -29,17 +28,14 @@ func physics_update(delta: float):
 	var dir : Vector2
 	var velocity := Vector2.ZERO
 	
-	if distance <= reach:
+	if distance <= approaching_reach:
 		transitioned.emit(self, target_state)
-		print("Within reach - stopping")
 		
 	else:
 		dir = owner.to_local(nav_agent.get_next_path_position()).normalized()
-		velocity = dir * speed
+		velocity = dir * approaching_speed
 		make_path(Global.player_position)
-		print("Approaching player")
 	
-	#print(velocity, " ||  ",distance, " || ",reach )
 	$"../..".velocity = velocity
 	$"../..".move_and_slide()
 

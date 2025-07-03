@@ -1,22 +1,20 @@
 extends state
 class_name tackle
 
-@onready var nav_agent: NavigationAgent2D = $"../../NavigationAgent2D"
-
-@onready var approach_state = $"../approach"
+@onready var wait_state = $"../wait"
 
 var target_position
 var start_position
-const reach = 100
-const speed = 100
+var distance
+@export var tackle_reach = 300
+@export var tackle_speed = 750
+var dir : Vector2
 
 func enter():
-	#target_position = owner.to_local(nav_agent.get_next_path_position()).normalized()*reach
-	target_position = (Global.player_position-$"../..".global_position).normalized()*reach
-	start_position = $"../..".global_position
-	
-	print(target_position, " || ", "target position" )
-	
+	target_position = ((Global.player_position-$"../..".global_position).normalized()*tackle_reach) + $"../..".global_position
+	start_position = $"../..".position
+	dir = $"../..".global_position.direction_to(target_position)
+
 func exit():
 	pass
 
@@ -25,11 +23,15 @@ func update(delta: float):
 	
 func physics_update(delta: float):
 	
-	var dir = $"../..".global_position.direction_to(target_position)
-	#print((($"../..".global_position) - (target_position)).length(), " || snatcher position")
-	#if (abs(target_position - $"../..".global_position) + abs($"../..".global_position - start_position)) >= abs(target_position - start_position):
-		#dir = Vector2.ZERO
-		#transitioned.emit(self, approach_state)
+	distance = start_position.distance_to(owner.global_position)
 	
-	$"../..".velocity = dir*speed
+	var velocity := Vector2.ZERO
+	
+	if distance >= tackle_reach:
+		transitioned.emit(self, wait_state)
+		
+	else:
+		velocity = dir * tackle_speed
+		
+	$"../..".velocity = velocity
 	$"../..".move_and_slide()
