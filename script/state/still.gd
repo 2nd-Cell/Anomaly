@@ -1,10 +1,8 @@
 extends state
-class_name retreat
+class_name still
 
 var distance
-var dir
-
-@export var retreating_reach = 80.0
+@export var still_reach = 75.0
 
 @export var next_state : state
 
@@ -13,7 +11,6 @@ func _ready() -> void:
 
 func enter():
 	distance = Global.player_position.distance_to(owner.global_position)
-	dir = $"../..".global_position.direction_to(Global.player_position)
 
 func exit():
 	pass
@@ -25,13 +22,6 @@ func physics_update(delta: float):
 	
 	distance = Global.player_position.distance_to(owner.global_position)
 	
-	var velocity := Vector2.ZERO
-	
-	if distance >= retreating_reach:
+	if distance <= still_reach :
 		transitioned.emit(self, next_state)
-		
-	else:
-		velocity = -(dir * retreating_reach)
-		
-	$"../..".velocity = velocity
-	$"../..".move_and_slide()
+	

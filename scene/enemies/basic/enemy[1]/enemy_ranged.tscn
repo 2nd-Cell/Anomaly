@@ -47,9 +47,8 @@ firing_position = NodePath("../Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
-[node name="state_machine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="state_machine" type="Node2D" parent="."]
 script = ExtResource("5_dshsp")
-initial_state = NodePath("")
 
 [node name="approach" type="Node" parent="state_machine"]
 script = ExtResource("6_6ym4q")
@@ -58,7 +57,5 @@ approaching_reach = 200
 
 [node name="retreat" type="Node" parent="state_machine"]
 script = ExtResource("7_rqh6f")
-approaching_speed = null
-approaching_reach = null
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

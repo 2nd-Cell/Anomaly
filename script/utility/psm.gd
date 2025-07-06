@@ -1,12 +1,11 @@
-extends Node2D
-
+extends state
+class_name psm
 @export var initial_state: state
 
 var current_state: state
 var states: Dictionary = {}
-var is_immune = false
 
-func _ready() -> void:
+func enter() -> void:
 	
 	for child in get_children():
 		if child is state:
@@ -18,29 +17,33 @@ func _ready() -> void:
 		initial_state.enter()
 		current_state = initial_state	
 
-func _process(delta: float) -> void:
+func update(delta: float) -> void:
 	if current_state:
 		current_state.update(delta)
 		
-func _physics_process(delta: float) -> void:
+func physics_update(delta: float) -> void:
 	if current_state:
 		current_state.physics_update(delta)
 
-func on_child_transition(state, new_state):
+func on_child_transition(old_state, new_state):
 	
-	if state!=current_state:
-		return
+	if new_state in get_children() and new_state is state:
 		
-	if !new_state:
-		return
+		if old_state!=current_state:
+			return
 		
-	if current_state:
-		current_state.exit()
+		if !new_state:
+			return
+		
+		if current_state:
+			current_state.exit()
 	
-	is_immune = false
-	new_state.enter()
+		new_state.enter()
 	
-	current_state = new_state
+		current_state = new_state
+		
+	else:
+		transitioned.emit(self, new_state)
 	
 func on_immunity_request():
-	is_immune = true
+	is_immune.emit()
