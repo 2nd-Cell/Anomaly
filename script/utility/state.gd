@@ -2,6 +2,7 @@ extends Node
 class_name state
 
 signal transitioned
+signal is_immune
 
 func enter():
 	pass

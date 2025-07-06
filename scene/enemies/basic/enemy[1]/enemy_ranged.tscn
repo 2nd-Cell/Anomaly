@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4oruv1prbkjp"]
+[gd_scene load_steps=9 format=3 uid="uid://b4oruv1prbkjp"]
 
 [ext_resource type="Script" path="res://script/enemies/basic/enemy[1]/ranged_enemy_movement.gd" id="1_cg3bc"]
 [ext_resource type="Texture2D" uid="uid://c3voijdpvps3j" path="res://icon.svg" id="2_syswm"]
 [ext_resource type="PackedScene" uid="uid://clwjvj5cxto6n" path="res://scene/ui/health_bar.tscn" id="3_3bfxn"]
 [ext_resource type="Script" path="res://script/enemies/basic/enemy[1]/enemy_weapon.gd" id="4_mq5yg"]
+[ext_resource type="Script" path="res://script/utility/state_machine.gd" id="5_dshsp"]
+[ext_resource type="Script" path="res://script/state/approach.gd" id="6_6ym4q"]
+[ext_resource type="Script" path="res://script/state/retreat.gd" id="7_rqh6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enexm"]
 
@@ -44,5 +47,18 @@ firing_position = NodePath("../Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
-[connection signal="fire" from="." to="enemy_weapon" method="_on_enemy_ranged_fire"]
+[node name="state_machine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_dshsp")
+initial_state = NodePath("")
+
+[node name="approach" type="Node" parent="state_machine"]
+script = ExtResource("6_6ym4q")
+approaching_speed = 75.0
+approaching_reach = 200
+
+[node name="retreat" type="Node" parent="state_machine"]
+script = ExtResource("7_rqh6f")
+approaching_speed = null
+approaching_reach = null
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

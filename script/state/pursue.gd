@@ -10,7 +10,7 @@ func _ready() -> void:
 	pass
 
 func enter():
-	print("finally")
+	pass
 
 func exit():
 	pass

@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 signal Death
 
+@export var knockback_resistance := 50
+var knockback: Vector2 = Vector2.ZERO
+var knockback_timer: float = 0.0
+
 @export var health = 100
 @onready var healthbar = $health_bar
 var is_emitted_death = false
@@ -23,6 +27,11 @@ func take_damage(val: float) -> void:
 
 func apply_knockback(direction: Vector2, force: float, knockback_duration: float) -> void:
 	pass
+	#if !$state_machine.is_immune :
+		#
+		#if knockback == Vector2.ZERO:
+			#knockback = direction * force / knockback_resistance
+		#knockback_timer = knockback_duration
 
 #extends CharacterBody2D
 #
