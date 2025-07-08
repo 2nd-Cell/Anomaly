@@ -12,7 +12,7 @@ func enter() -> void:
 			states[child.name] = child
 			child.transitioned.connect(on_child_transition)
 			child.is_immune.connect(on_immunity_request)
-			
+			child.change_knockback_multiplier.connect(on_knockback_request)
 	if initial_state:
 		initial_state.enter()
 		current_state = initial_state	
@@ -47,3 +47,6 @@ func on_child_transition(old_state, new_state):
 	
 func on_immunity_request():
 	is_immune.emit()
+
+func on_knockback_request(multiplier: float):
+	change_knockback_multiplier.emit(multiplier)

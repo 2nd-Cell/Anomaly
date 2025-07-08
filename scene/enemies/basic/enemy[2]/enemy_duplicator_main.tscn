@@ -45,10 +45,6 @@ offset_right = 20.0
 offset_bottom = -13.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Cooldown" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-
 [node name="state_machine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_3ohdb")
 initial_state = NodePath("approach")
@@ -71,5 +67,9 @@ next_state = NodePath("../still")
 script = ExtResource("8_ml6gt")
 next_state = NodePath("../retreat")
 
+[node name="Cooldown" type="Timer" parent="state_machine/summon"]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="state_machine/summon/Cooldown" to="state_machine/summon" method="_on_cooldown_timeout"]

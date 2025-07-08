@@ -54,5 +54,5 @@ func _on_interval_timeout() -> void:
 	get_tree().call_group("waveCounter", "set_wave_num", current_level)
 	wave_enemies = num_enemy_calc_fn(current_level) + wave_enemies - dead_enemies
 	dead_enemies = 0
-	#spawn_enemies(num_enemy_calc_fn(current_level))
+	spawn_enemies(num_enemy_calc_fn(current_level))
 	

@@ -43,6 +43,7 @@ offset_bottom = -13.0
 [node name="state_machine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_k4xta")
 initial_state = NodePath("pursue")
+default_knockback_multiplier = 100.0
 
 [node name="pursue" type="Node" parent="state_machine"]
 script = ExtResource("7_ff8sh")

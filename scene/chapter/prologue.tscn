@@ -1,14 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvjfl1fdyg1s8"]
+[gd_scene load_steps=8 format=3 uid="uid://cvjfl1fdyg1s8"]
 
 [ext_resource type="Script" path="res://script/chapter/spawn_holder.gd" id="1_7fjf3"]
-[ext_resource type="Texture2D" uid="uid://c12l42f8wjii7" path="res://ui/background/download (1).jpeg" id="2_vde6l"]
 [ext_resource type="PackedScene" uid="uid://j2163lfiqocf" path="res://scene/player/player.tscn" id="3_t3rng"]
 [ext_resource type="PackedScene" uid="uid://wv1f1pyvfmis" path="res://scene/npc/npc.tscn" id="4_j6yy3"]
 [ext_resource type="PackedScene" uid="uid://crc4kify4ns83" path="res://scene/ui/wave.tscn" id="5_0ae0g"]
 [ext_resource type="PackedScene" uid="uid://yaraaoc0v7mq" path="res://scene/area/area[0].tscn" id="5_wjkmx"]
-[ext_resource type="PackedScene" uid="uid://cndyihi4jfvj6" path="res://scene/enemies/basic/skreaver/skreaver.tscn" id="6_1sgjy"]
 [ext_resource type="PackedScene" uid="uid://d0i0t7syhjkgw" path="res://scene/ui/timer.tscn" id="6_rj116"]
-[ext_resource type="PackedScene" uid="uid://i4e5w7ejftg1" path="res://scene/enemies/basic/enemy[2]/enemy_duplicator_main.tscn" id="7_e5icg"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wkhtr"]
 vertices = PackedVector2Array(1524, 759, 4.00781, 759, 4.97656, 17.9531, 1524, 11.0391)
@@ -17,13 +14,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-5, 8, 1534, 1, 1534, 7
 
 [node name="Prologue" type="Node2D"]
 script = ExtResource("1_7fjf3")
-
-[node name="Download(1)" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(0, 0, 0, 1)
-position = Vector2(573.5, 306.5)
-scale = Vector2(3.81667, 3.81548)
-texture = ExtResource("2_vde6l")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(5, 0)
@@ -43,12 +33,6 @@ offset_left = -286.0
 offset_top = -140.0
 offset_right = -210.0
 offset_bottom = -116.0
-
-[node name="skreaver" parent="NavigationRegion2D" instance=ExtResource("6_1sgjy")]
-position = Vector2(255, 100)
-
-[node name="enemy_bob" parent="NavigationRegion2D" instance=ExtResource("7_e5icg")]
-position = Vector2(100, 300)
 
 [node name="SpawnHolder" type="Node2D" parent="."]
 

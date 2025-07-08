@@ -4,7 +4,7 @@ class_name approach
 @export var approaching_speed := 50.0
 @onready var nav_agent: NavigationAgent2D = $"../../NavigationAgent2D"
 
-@export var approaching_reach := 100
+@export var approaching_reach := 200
 var distance
 
 @export var next_state : state

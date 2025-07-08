@@ -3,6 +3,7 @@ class_name state
 
 signal transitioned
 signal is_immune
+signal change_knockback_multiplier
 
 func enter():
 	pass

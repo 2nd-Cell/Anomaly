@@ -48,6 +48,6 @@ initial_state = NodePath("pursue")
 
 [node name="pursue" type="Node" parent="state_machine"]
 script = ExtResource("5_g6n4v")
-pursuing_speed = 200.0
+pursuing_speed = 90.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

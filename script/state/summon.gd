@@ -3,7 +3,6 @@ class_name summon
 
 var spawnee = preload("res://scene/enemies/basic/enemy[2]/enemy_duplicator_base.tscn")
 
-@export var summoning_speed := 50.0
 @export var summoning_reach:= 150.0
 var in_reach
 var distance
@@ -29,12 +28,14 @@ func physics_update(delta: float):
 	
 	if distance >= summoning_reach:
 		transitioned.emit(self, next_state)
+	if $"Cooldown".is_stopped():
+		$"Cooldown".start()
 
 func _on_cooldown_timeout() -> void:
 	spawn_spawnee()
 
 func spawn_spawnee():
-	
+	print("foo")
 	var m = spawnee.instantiate()
 	m.position = owner.global_position + Vector2(30,30)
 	get_tree().get_first_node_in_group("spawner").add_child(m)
