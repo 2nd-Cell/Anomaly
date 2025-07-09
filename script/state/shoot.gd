@@ -1,5 +1,5 @@
 extends psm
-class_name shooting
+class_name shoot
 
 var bullet_scene : PackedScene = preload("res://scene/enemies/basic/enemy[1]/EnemyBullet.tscn")
 @export var shooting_position : Marker2D

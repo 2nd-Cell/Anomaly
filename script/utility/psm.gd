@@ -10,9 +10,17 @@ func enter() -> void:
 	for child in get_children():
 		if child is state:
 			states[child.name] = child
-			child.transitioned.connect(on_child_transition)
-			child.is_immune.connect(on_immunity_request)
-			child.change_knockback_multiplier.connect(on_knockback_request)
+
+# never ever remove these if condition
+# you will regret it
+# number of hours wasted = 1
+			if !child.transitioned.get_connections():
+				child.transitioned.connect(on_child_transition)
+			if 	!child.is_immune.get_connections():	
+				child.is_immune.connect(on_immunity_request)
+			if !child.change_knockback_multiplier.get_connections():	
+				child.change_knockback_multiplier.connect(on_knockback_request)
+				
 	if initial_state:
 		initial_state.enter()
 		current_state = initial_state	

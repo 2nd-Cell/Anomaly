@@ -35,9 +35,9 @@ func _on_cooldown_timeout() -> void:
 	spawn_spawnee()
 
 func spawn_spawnee():
-	print("foo")
 	var m = spawnee.instantiate()
 	m.position = owner.global_position + Vector2(30,30)
 	get_tree().get_first_node_in_group("spawner").add_child(m)
+	#print(get_tree().)
 	
 		
