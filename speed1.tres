@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="buff" load_steps=2 format=3 uid="uid://betef261mhe8y"]
+
+[ext_resource type="Script" uid="uid://m2qvwwmg53lt" path="res://script/utility/buffs.gd" id="1_4xt7v"]
+
+[resource]
+script = ExtResource("1_4xt7v")
+name = "SPEED"
+increment = 100.0
+duration = 5.0
+inc_type = "ABS"
+buff_type = "TEMP"
+metadata/_custom_type_script = "uid://m2qvwwmg53lt"

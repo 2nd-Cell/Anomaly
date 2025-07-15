@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cndyihi4jfvj6"]
 
-[ext_resource type="Script" path="res://script/enemies/basic/skreaver/skreaver.gd" id="1_6xmbr"]
+[ext_resource type="Script" uid="uid://c1bv58gwslvnw" path="res://script/enemies/basic/skreaver/skreaver.gd" id="1_6xmbr"]
 [ext_resource type="Texture2D" uid="uid://c3voijdpvps3j" path="res://icon.svg" id="2_5c25l"]
 [ext_resource type="PackedScene" uid="uid://clwjvj5cxto6n" path="res://scene/ui/health_bar.tscn" id="3_2vq8q"]
-[ext_resource type="Script" path="res://script/utility/state_machine.gd" id="4_k4xta"]
-[ext_resource type="Script" path="res://script/state/pursue.gd" id="7_ff8sh"]
+[ext_resource type="Script" uid="uid://e8skkwnda6rd" path="res://script/utility/state_machine.gd" id="4_k4xta"]
+[ext_resource type="Script" uid="uid://byski73x7uqc3" path="res://script/state/pursue.gd" id="7_ff8sh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kbee"]
 

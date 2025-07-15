@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dldbpr35hx4w5"]
 
-[ext_resource type="Script" path="res://script/buff/speed+.gd" id="1_rj5c3"]
+[ext_resource type="Script" uid="uid://cdfkttpfu3ah0" path="res://script/buff/speed+.gd" id="1_rj5c3"]
 [ext_resource type="Texture2D" uid="uid://fmjx71jnwhbv" path="res://ui/background/pngtree-magic-crystal-icon-cartoon-vector-png-image_5041556.png" id="2_8ppk8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1nvab"]

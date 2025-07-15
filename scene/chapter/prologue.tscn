@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvjfl1fdyg1s8"]
+[gd_scene load_steps=13 format=3 uid="uid://cvjfl1fdyg1s8"]
 
-[ext_resource type="Script" path="res://script/chapter/spawn_holder.gd" id="1_7fjf3"]
+[ext_resource type="Script" uid="uid://b66od66mxljxv" path="res://script/chapter/spawn_holder.gd" id="1_7fjf3"]
 [ext_resource type="PackedScene" uid="uid://j2163lfiqocf" path="res://scene/player/player.tscn" id="3_t3rng"]
 [ext_resource type="PackedScene" uid="uid://wv1f1pyvfmis" path="res://scene/npc/npc.tscn" id="4_j6yy3"]
 [ext_resource type="PackedScene" uid="uid://crc4kify4ns83" path="res://scene/ui/wave.tscn" id="5_0ae0g"]
@@ -8,11 +8,30 @@
 [ext_resource type="PackedScene" uid="uid://yaraaoc0v7mq" path="res://scene/area/area[0].tscn" id="5_wjkmx"]
 [ext_resource type="PackedScene" uid="uid://d0i0t7syhjkgw" path="res://scene/ui/timer.tscn" id="6_rj116"]
 [ext_resource type="PackedScene" uid="uid://dldbpr35hx4w5" path="res://scene/buff/speed+.tscn" id="8_o7d6q"]
+[ext_resource type="Script" uid="uid://m2qvwwmg53lt" path="res://script/utility/buffs.gd" id="9_vxrdb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wkhtr"]
 vertices = PackedVector2Array(1524, 759, 4.00781, 759, 4.97656, 17.9531, 1524, 11.0391)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-5, 8, 1534, 1, 1534, 769, -6, 769)])
+
+[sub_resource type="Resource" id="Resource_vxrdb"]
+script = ExtResource("9_vxrdb")
+name = "SPEED"
+increment = 100.0
+duration = 10.0
+inc_type = "ABS"
+buff_type = "TEMP"
+metadata/_custom_type_script = "uid://m2qvwwmg53lt"
+
+[sub_resource type="Resource" id="Resource_72ahj"]
+script = ExtResource("9_vxrdb")
+name = "SPEED"
+increment = 1000.0
+duration = 5.0
+inc_type = "ABS"
+buff_type = "TEMP"
+metadata/_custom_type_script = "uid://m2qvwwmg53lt"
 
 [node name="Prologue" type="Node2D"]
 script = ExtResource("1_7fjf3")
@@ -76,6 +95,11 @@ position = Vector2(800, 213)
 z_index = -1
 
 [node name="speed+" parent="." instance=ExtResource("8_o7d6q")]
-position = Vector2(396, 221)
+position = Vector2(393, 217)
+buff = SubResource("Resource_vxrdb")
+
+[node name="speed+2" parent="." instance=ExtResource("8_o7d6q")]
+position = Vector2(421, 282)
+buff = SubResource("Resource_72ahj")
 
 [connection signal="timeout" from="Interval" to="." method="_on_interval_timeout"]
