@@ -74,3 +74,12 @@ func take_damage(val: float) -> void:
 		get_tree().change_scene_to_packed(loading_screen)
 		#
 	healthbar.health = health
+
+func add_buff(stat, alt_type, value, duration):
+	
+	if duration == -1:
+		stats._add_perm_buff(stat, alt_type, value)
+		
+	else:
+		stats._add_temp_buff(stat, alt_type, value, duration)
+	
