@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://j2163lfiqocf"]
+[gd_scene load_steps=19 format=3 uid="uid://j2163lfiqocf"]
 
 [ext_resource type="Script" uid="uid://biu0u0p6yl40p" path="res://script/player/player.gd" id="1_2kc55"]
 [ext_resource type="Resource" uid="uid://bj2ty40me3iv6" path="res://script/resource/player/stats.tres" id="2_7i6ai"]
@@ -9,7 +9,9 @@
 [ext_resource type="Script" uid="uid://bh1w8r8reu61h" path="res://script/state/move.gd" id="6_emebl"]
 [ext_resource type="Script" uid="uid://ddpt8ag5iityd" path="res://script/player/area_controller.gd" id="6_pisg7"]
 [ext_resource type="Script" uid="uid://do4ayjtfujdxd" path="res://script/utility/buff_machine.gd" id="8_hfhxk"]
-[ext_resource type="PackedScene" uid="uid://bxnjf6bke6afh" path="res://scene/util/inventory_backend.tscn" id="10_oypl4"]
+[ext_resource type="Script" uid="uid://dbg63xys8ekjg" path="res://script/state/player_pause.gd" id="9_1wtbu"]
+[ext_resource type="PackedScene" uid="uid://b61231gl6rmmv" path="res://scene/ui/Inventory.tscn" id="10_oypl4"]
+[ext_resource type="PackedScene" uid="uid://bxnjf6bke6afh" path="res://scene/util/inventory_backend.tscn" id="11_qjg4s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wnvbc"]
 radius = 7.0
@@ -98,11 +100,18 @@ initial_state = NodePath("move")
 [node name="move" type="Node" parent="state_machine"]
 script = ExtResource("6_emebl")
 
+[node name="pause" type="Node" parent="state_machine"]
+script = ExtResource("9_1wtbu")
+
+[node name="Inventory" parent="state_machine/pause" node_paths=PackedStringArray("InventoryManager") instance=ExtResource("10_oypl4")]
+InventoryManager = NodePath("../inventory_backend")
+
+[node name="inventory_backend" parent="state_machine/pause" instance=ExtResource("11_qjg4s")]
+
 [node name="buff_machine" type="Node2D" parent="."]
 script = ExtResource("8_hfhxk")
 base_stats = ExtResource("2_7i6ai")
 
-[node name="inventory_backend" parent="." instance=ExtResource("10_oypl4")]
-
 [connection signal="buff_signaled" from="Area2D" to="buff_machine" method="_on_area_2d_buff_signaled"]
-[connection signal="pickup_item" from="Area2D" to="inventory_backend" method="_on_area_2d_pickup_item"]
+[connection signal="pickup_item" from="Area2D" to="state_machine/pause/inventory_backend" method="_on_area_2d_pickup_item"]
+[connection signal="on_inventory_update" from="state_machine/pause/inventory_backend" to="state_machine/pause/Inventory" method="_on_inventory_backend_on_inventory_update"]
