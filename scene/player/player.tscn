@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://j2163lfiqocf"]
+[gd_scene load_steps=17 format=3 uid="uid://j2163lfiqocf"]
 
 [ext_resource type="Script" uid="uid://biu0u0p6yl40p" path="res://script/player/player.gd" id="1_2kc55"]
 [ext_resource type="Resource" uid="uid://bj2ty40me3iv6" path="res://script/resource/player/stats.tres" id="2_7i6ai"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bh1w8r8reu61h" path="res://script/state/move.gd" id="6_emebl"]
 [ext_resource type="Script" uid="uid://ddpt8ag5iityd" path="res://script/player/area_controller.gd" id="6_pisg7"]
 [ext_resource type="Script" uid="uid://do4ayjtfujdxd" path="res://script/utility/buff_machine.gd" id="8_hfhxk"]
+[ext_resource type="PackedScene" uid="uid://bxnjf6bke6afh" path="res://scene/util/inventory_backend.tscn" id="10_oypl4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wnvbc"]
 radius = 7.0
@@ -101,4 +102,7 @@ script = ExtResource("6_emebl")
 script = ExtResource("8_hfhxk")
 base_stats = ExtResource("2_7i6ai")
 
+[node name="inventory_backend" parent="." instance=ExtResource("10_oypl4")]
+
 [connection signal="buff_signaled" from="Area2D" to="buff_machine" method="_on_area_2d_buff_signaled"]
+[connection signal="pickup_item" from="Area2D" to="inventory_backend" method="_on_area_2d_pickup_item"]

@@ -5,7 +5,10 @@ extends Node2D
 func num_enemy_calc_fn(lvl):
 	return lvl*10
 #the monster we will be spawning in. 
-@onready var monster_arr := [preload("res://scene/enemies/basic/enemy[2]/enemy_duplicator_main.tscn"), preload("res://scene/enemies/basic/enemy[1]/enemy_ranged.tscn"), preload("res://scene/enemies/basic/skreaver/skreaver.tscn"), preload("res://scene/enemies/intermediate/snatcher/snatcher.tscn")]
+@onready var monster_arr := [preload("res://scene/enemies/basic/enemy[2]/enemy_duplicator_main.tscn"), 
+	preload("res://scene/enemies/basic/enemy[1]/enemy_ranged.tscn"), 
+	preload("res://scene/enemies/basic/skreaver/skreaver.tscn"), 
+	preload("res://scene/enemies/intermediate/snatcher/snatcher.tscn")]
 #A random number genrerator to spawn from alternating spawn points.
 @onready var rand=RandomNumberGenerator.new()
 @onready var timer = $Interval
@@ -16,6 +19,7 @@ var wave_enemies = 0
 func _ready():
 	add_to_group("spawner", true)
 	get_tree().call_group("wavetimer", "set_time", 3)
+	#spawn_enemies(1)
 
 func run_timer(time: int) -> void:
 	if not timer.is_stopped():
@@ -25,7 +29,11 @@ func run_timer(time: int) -> void:
 	get_tree().call_group("waveCounter", "set_wave_state", true)
 	timer.start()
 
-func enemy_death():
+func enemy_death(ent=null, ent_position=Vector2(0,0)):
+	if ent != null:
+		ent.position = ent_position
+		add_child(ent)
+	
 	dead_enemies+=1
 	if dead_enemies==wave_enemies:
 		run_timer(10)
@@ -35,6 +43,7 @@ func spawn_enemies(num: int)->void:
 	for i in range(num):
 		#rand.
 		var m = monster_arr.pick_random().instantiate()
+		#var m = monster_arr[2].instantiate()
 		#we check the amount of children on our spawn holder 
 		var spawn_length = $SpawnHolder.get_child_count()-1
 		# then make a random number in that range
