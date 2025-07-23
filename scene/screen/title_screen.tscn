@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cw34wh78hylw1"]
 
-[ext_resource type="Script" uid="uid://c7hdulrocfwb4" path="res://script/screen/title_screen.gd" id="1_26ft4"]
+[ext_resource type="Script" path="res://script/screen/title_screen.gd" id="1_26ft4"]
 [ext_resource type="Texture2D" uid="uid://cpdne2qacnipo" path="res://ui/background/rm311-ploy-10b.jpg" id="2_xfnp6"]
 [ext_resource type="FontFile" uid="uid://dk803q0qxv68l" path="res://ui/font/xirod/Xirod.otf" id="3_o3ax7"]
 
