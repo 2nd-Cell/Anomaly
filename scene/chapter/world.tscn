@@ -1,68 +1,102 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvjfl1fdyg1s8"]
+[gd_scene load_steps=12 format=3 uid="uid://cvjfl1fdyg1s8"]
 
-[ext_resource type="PackedScene" uid="uid://j2163lfiqocf" path="res://scene/player/player.tscn" id="1_da537"]
-[ext_resource type="Texture2D" uid="uid://c12l42f8wjii7" path="res://ui/background/download (1).jpeg" id="3_5cvlq"]
-[ext_resource type="Script" path="res://script/chapter/spawn_holder.gd" id="3_iwbp0"]
+[ext_resource type="Script" path="res://script/utility/state_machine.gd" id="1_taywt"]
+[ext_resource type="Script" path="res://script/world_state/play.gd" id="2_f8p1x"]
+[ext_resource type="Script" path="res://script/world_state/title.gd" id="3_w8sh0"]
+[ext_resource type="Script" path="res://script/world_state/menu.gd" id="4_mt5sm"]
+[ext_resource type="Script" path="res://script/world_state/weapon.gd" id="5_34ypy"]
+[ext_resource type="Script" path="res://script/world_state/equipment.gd" id="6_j8tuv"]
+[ext_resource type="Script" path="res://script/world_state/item.gd" id="7_6l0gu"]
+[ext_resource type="Script" path="res://script/world_state/stat.gd" id="8_4i51t"]
+[ext_resource type="Script" path="res://script/world_state/option.gd" id="9_x1kp5"]
+[ext_resource type="Script" path="res://script/world_state/exit.gd" id="10_lyifi"]
+[ext_resource type="Script" path="res://script/world_state/menu_impl.gd" id="11_5m18y"]
 
-[sub_resource type="TileSet" id="TileSet_sw66g"]
-physics_layer_0/collision_layer = 1
-navigation_layer_0/layers = 1
+[node name="world" type="Node2D"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_wkhtr"]
-vertices = PackedVector2Array(1137, 646, 5, 646, 5, 18, 1137, 18)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-5, 8, 1147, 8, 1147, 656, -5, 656)])
+[node name="state_machine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_taywt")
+initial_state = NodePath("play")
 
-[node name="Prologue" type="Node2D"]
-script = ExtResource("3_iwbp0")
+[node name="play" type="Node" parent="state_machine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("2_f8p1x")
+next_state = NodePath("../menu")
 
-[node name="Download(1)" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(0, 0, 0, 1)
-position = Vector2(573.5, 306.5)
-scale = Vector2(3.81667, 3.81548)
-texture = ExtResource("3_5cvlq")
+[node name="title" type="Node" parent="state_machine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_w8sh0")
+next_state = NodePath("../play")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(0, -2)
-tile_set = SubResource("TileSet_sw66g")
+[node name="menu" type="Node" parent="state_machine" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_mt5sm")
+initial_state = NodePath("menu_impl")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-position = Vector2(5, -8)
-navigation_polygon = SubResource("NavigationPolygon_wkhtr")
+[node name="weapon" type="Node" parent="state_machine/menu" node_paths=PackedStringArray("next_state")]
+script = ExtResource("5_34ypy")
+next_state = NodePath("../menu_impl")
 
-[node name="player" parent="NavigationRegion2D" instance=ExtResource("1_da537")]
-position = Vector2(374, 238)
+[node name="equipment" type="Node" parent="state_machine/menu" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_j8tuv")
+next_state = NodePath("../menu_impl")
 
-[node name="SpawnHolder" type="Node2D" parent="."]
+[node name="item" type="Node" parent="state_machine/menu" node_paths=PackedStringArray("next_state")]
+script = ExtResource("7_6l0gu")
+next_state = NodePath("../menu_impl")
 
-[node name="Spawner1" type="Node2D" parent="SpawnHolder"]
-position = Vector2(646, -238)
+[node name="stat" type="Node" parent="state_machine/menu" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_4i51t")
+next_state = NodePath("../menu_impl")
 
-[node name="Spawner2" type="Node2D" parent="SpawnHolder"]
-position = Vector2(1404, 328)
+[node name="option" type="Node" parent="state_machine/menu" node_paths=PackedStringArray("next_state")]
+script = ExtResource("9_x1kp5")
+next_state = NodePath("../menu_impl")
 
-[node name="Spawner3" type="Node2D" parent="SpawnHolder"]
-position = Vector2(1443, 900)
+[node name="exit" type="Node" parent="state_machine/menu" node_paths=PackedStringArray("next_state")]
+script = ExtResource("10_lyifi")
+next_state = NodePath("../../title")
 
-[node name="Spawner4" type="Node2D" parent="SpawnHolder"]
-position = Vector2(1402, -221)
+[node name="menu_impl" type="Node" parent="state_machine/menu" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_5m18y")
+next_state = NodePath("../../play")
 
-[node name="Spawner5" type="Node2D" parent="SpawnHolder"]
-position = Vector2(588, 972)
+[node name="VBoxContainer" type="VBoxContainer" parent="state_machine/menu/menu_impl"]
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Spawner6" type="Node2D" parent="SpawnHolder"]
-position = Vector2(-194, -190)
+[node name="weapon" type="Button" parent="state_machine/menu/menu_impl/VBoxContainer"]
+layout_mode = 2
+text = "weapon"
+alignment = 0
 
-[node name="Spawner7" type="Node2D" parent="SpawnHolder"]
-position = Vector2(-206, 878)
+[node name="equipment" type="Button" parent="state_machine/menu/menu_impl/VBoxContainer"]
+layout_mode = 2
+text = "equipment"
+alignment = 0
 
-[node name="Spawner8" type="Node2D" parent="SpawnHolder"]
-position = Vector2(-240, 360)
+[node name="item" type="Button" parent="state_machine/menu/menu_impl/VBoxContainer"]
+layout_mode = 2
+text = "item"
+alignment = 0
 
-[node name="Interval" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-autostart = true
+[node name="stat" type="Button" parent="state_machine/menu/menu_impl/VBoxContainer"]
+layout_mode = 2
+text = "stat"
+alignment = 0
 
-[connection signal="timeout" from="Interval" to="." method="_on_interval_timeout"]
+[node name="option" type="Button" parent="state_machine/menu/menu_impl/VBoxContainer"]
+layout_mode = 2
+text = "option"
+alignment = 0
+
+[node name="exit" type="Button" parent="state_machine/menu/menu_impl/VBoxContainer"]
+layout_mode = 2
+text = "exit"
+alignment = 0
+
+[connection signal="pressed" from="state_machine/menu/menu_impl/VBoxContainer/weapon" to="state_machine/menu/menu_impl" method="_on_weapon_pressed"]
+[connection signal="pressed" from="state_machine/menu/menu_impl/VBoxContainer/equipment" to="state_machine/menu/menu_impl" method="_on_equipment_pressed"]
+[connection signal="pressed" from="state_machine/menu/menu_impl/VBoxContainer/item" to="state_machine/menu/menu_impl" method="_on_item_pressed"]
+[connection signal="pressed" from="state_machine/menu/menu_impl/VBoxContainer/stat" to="state_machine" method="_on_stat_pressed"]
+[connection signal="pressed" from="state_machine/menu/menu_impl/VBoxContainer/stat" to="state_machine/menu/menu_impl" method="_on_stat_pressed"]
+[connection signal="pressed" from="state_machine/menu/menu_impl/VBoxContainer/option" to="state_machine/menu/menu_impl" method="_on_option_pressed"]
+[connection signal="pressed" from="state_machine/menu/menu_impl/VBoxContainer/exit" to="state_machine" method="_on_exit_pressed"]
+[connection signal="pressed" from="state_machine/menu/menu_impl/VBoxContainer/exit" to="state_machine/menu/menu_impl" method="_on_exit_pressed"]

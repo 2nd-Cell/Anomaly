@@ -65,6 +65,7 @@ func _ready() -> void:
 	healthbar.init_health(health)
 #
 func take_damage(val: float) -> void:
+	print(health)
 	#health -= val
 	if health <= 0:
 		if not is_emitted_death:

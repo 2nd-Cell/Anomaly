@@ -16,7 +16,7 @@ func _ready():
 		slots.append(slot)
 		add_child(slot)
 		InventoryManager.init_inventory(rows, col)
-	#InventoryManager.connect("on_inventory_update", update_display)
+	InventoryManager.connect("on_inventory_update", update_display)
 
 func update_display():
 	# Clear all slots first
@@ -24,7 +24,6 @@ func update_display():
 		slot.display_item(null, 0)
 		
 	var items = InventoryManager.get_items()
-	print(items)
 	var ind = 0
 	for i in items:
 		slots[ind].display_item(items[i].res, items[i].qty)

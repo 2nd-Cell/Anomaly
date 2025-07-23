@@ -39,7 +39,7 @@ func fire_bullet():
 	# the cursor's position.
 	# The bullet will use this rotation to decide its direction.
 	var spawned_bullet := bullet_scene.instantiate()
-	var mouse_direction : Vector2 = Global.player_position - $"../..".global_position
+	var bullet_direction : Vector2 = Global.player_position - $"../..".global_position
 	spawned_bullet.global_position = shooting_position.global_position
-	spawned_bullet.rotation = mouse_direction.angle()
+	spawned_bullet.rotation = bullet_direction.angle()
 	get_tree().root.add_child(spawned_bullet)

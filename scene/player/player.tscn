@@ -1,9 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://j2163lfiqocf"]
+[gd_scene load_steps=19 format=3 uid="uid://j2163lfiqocf"]
 
 [ext_resource type="Script" path="res://script/player/player.gd" id="1_2kc55"]
 [ext_resource type="Resource" uid="uid://bj2ty40me3iv6" path="res://script/resource/player/stats.tres" id="2_7i6ai"]
 [ext_resource type="Texture2D" uid="uid://cgt61kg07ywyw" path="res://ui/sprites/trial_player.png" id="2_jis04"]
-[ext_resource type="Script" path="res://script/player/player_weapon.gd" id="3_1eaxr"]
 [ext_resource type="PackedScene" uid="uid://clwjvj5cxto6n" path="res://scene/ui/health_bar.tscn" id="4_i0vyb"]
 [ext_resource type="Script" path="res://script/utility/state_machine.gd" id="5_igr0g"]
 [ext_resource type="Script" path="res://script/state/move.gd" id="6_emebl"]
@@ -61,7 +60,6 @@ collision_mask = 13
 script = ExtResource("1_2kc55")
 stats = ExtResource("2_7i6ai")
 knockback_multiplier = 0
-health = 0
 metadata/Player = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -70,9 +68,6 @@ shape = SubResource("CapsuleShape2D_wnvbc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_d3tdk")
-
-[node name="player_weapon" type="Node2D" parent="."]
-script = ExtResource("3_1eaxr")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
@@ -97,16 +92,15 @@ shape = SubResource("CapsuleShape2D_pohnm")
 script = ExtResource("5_igr0g")
 initial_state = NodePath("move")
 
-[node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("next_state", "initial_state")]
+[node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_emebl")
-next_state = NodePath("../pause")
 initial_state = NodePath("player_shoot")
 
 [node name="player_shoot" type="Node" parent="state_machine/move" node_paths=PackedStringArray("firing_position")]
 script = ExtResource("9_vdhlf")
 firing_position = NodePath("../../../Marker2D")
 
-[node name="pause" type="Node" parent="state_machine" node_paths=PackedStringArray("next_state")]
+[node name="pause" type="Node2D" parent="state_machine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("9_1wtbu")
 next_state = NodePath("../move")
 
