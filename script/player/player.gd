@@ -61,7 +61,8 @@ func _physics_process(delta: float) -> void:
 func _ready() -> void:
 	#AnimPlayer.play("default")
 	#Global.player_position = position
-	#
+	
+	Global.register_save_state_item("player_stat", stats)
 	healthbar.init_health(health)
 #
 func take_damage(val: float) -> void:

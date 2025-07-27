@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bbc2jbexv03oi"]
 
-[ext_resource type="Script" path="res://script/screen/transition_screen.gd" id="1_cmroa"]
+[ext_resource type="Script" uid="uid://dvxnlj60nac6x" path="res://script/screen/transition_screen.gd" id="1_cmroa"]
 
 [sub_resource type="Animation" id="Animation_e857i"]
 length = 0.001
@@ -51,9 +51,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aofs5"]
 _data = {
-"RESET": SubResource("Animation_e857i"),
-"fade_from_black": SubResource("Animation_c2l80"),
-"fade_to_black": SubResource("Animation_16cph")
+&"RESET": SubResource("Animation_e857i"),
+&"fade_from_black": SubResource("Animation_c2l80"),
+&"fade_to_black": SubResource("Animation_16cph")
 }
 
 [node name="transition_screen" type="Control"]

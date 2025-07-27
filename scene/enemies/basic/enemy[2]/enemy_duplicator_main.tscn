@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://i4e5w7ejftg1"]
 
-[ext_resource type="Script" path="res://script/enemies/basic/enemy[2]/enemy_duplicator_main.gd" id="1_wxw8o"]
+[ext_resource type="Script" uid="uid://bo7hputd4vw8p" path="res://script/enemies/basic/enemy[2]/enemy_duplicator_main.gd" id="1_wxw8o"]
 [ext_resource type="Texture2D" uid="uid://c3voijdpvps3j" path="res://icon.svg" id="2_o41su"]
 [ext_resource type="PackedScene" uid="uid://clwjvj5cxto6n" path="res://scene/ui/health_bar.tscn" id="3_0roec"]
-[ext_resource type="Script" path="res://script/utility/state_machine.gd" id="4_3ohdb"]
-[ext_resource type="Script" path="res://script/state/approach.gd" id="5_mrssi"]
-[ext_resource type="Script" path="res://script/state/summon.gd" id="6_qvveh"]
-[ext_resource type="Script" path="res://script/state/retreat.gd" id="7_mcckv"]
-[ext_resource type="Script" path="res://script/state/still.gd" id="8_ml6gt"]
+[ext_resource type="Script" uid="uid://e8skkwnda6rd" path="res://script/utility/state_machine.gd" id="4_3ohdb"]
+[ext_resource type="Script" uid="uid://bwibmjtxrfq3e" path="res://script/state/approach.gd" id="5_mrssi"]
+[ext_resource type="Script" uid="uid://bxpdsumxk2eic" path="res://script/state/summon.gd" id="6_qvveh"]
+[ext_resource type="Script" uid="uid://b1nbxmkvg8fff" path="res://script/state/retreat.gd" id="7_mcckv"]
+[ext_resource type="Script" uid="uid://dm5poyymlowq3" path="res://script/state/still.gd" id="8_ml6gt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kbee"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://crc4kify4ns83"]
 
-[ext_resource type="Script" path="res://script/ui/wave.gd" id="1_nnpa4"]
+[ext_resource type="Script" uid="uid://ddkm21bjpgk7u" path="res://script/ui/wave.gd" id="1_nnpa4"]
 
 [node name="wave" type="Control"]
 layout_mode = 3

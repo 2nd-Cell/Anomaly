@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://gbx4gxvbsm0s"]
 
-[ext_resource type="Script" path="res://script/weapons/player_weapons/bullet.gd" id="1_vfqbq"]
+[ext_resource type="Script" uid="uid://cvoh1ifv384yp" path="res://script/weapons/player_weapons/bullet.gd" id="1_vfqbq"]
 [ext_resource type="Texture2D" uid="uid://inkx1p5qe8lw" path="res://ui/bullet/All_Fire_Bullet_Pixel_16x16.png" id="2_lsxyp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ijas0"]

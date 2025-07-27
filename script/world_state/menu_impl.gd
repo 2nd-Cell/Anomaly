@@ -34,3 +34,6 @@ func _on_option_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	transitioned.emit(self, $"../exit")
+
+func _on_save_pressed() -> void:
+	Global.save_world()

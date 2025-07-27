@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b61231gl6rmmv"]
 
-[ext_resource type="Script" path="res://script/ui/inventory.gd" id="1_slaak"]
+[ext_resource type="Script" uid="uid://cakr42bobvgku" path="res://script/ui/inventory.gd" id="1_slaak"]
 [ext_resource type="PackedScene" uid="uid://l4j4mig1f8p1" path="res://scene/ui/item_slot.tscn" id="2_d08lj"]
 [ext_resource type="PackedScene" uid="uid://bxnjf6bke6afh" path="res://scene/util/inventory_backend.tscn" id="2_f2ypn"]
 

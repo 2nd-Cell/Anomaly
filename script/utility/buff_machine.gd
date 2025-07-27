@@ -8,6 +8,11 @@ func _ready():
 	var temp = base_stats.get_values()
 	for prop in temp:
 		_states[prop] = {"base_val": temp[prop], "applied_effects": []}
+	var prev_state = Global.get_save_state_item("player_buffs")
+	if prev_state == null:
+		Global.register_save_state_item("player_buffs", _states)
+	else:
+		_states = prev_state
 
 func add_buff(_buff: buff):
 	if _buff.name in _states:
@@ -37,7 +42,8 @@ func _physics_process(delta: float) -> void:
 	
 	for i in to_remove:
 		remove_buff(i)
-
+	
+	Global.update_save_state_item("player_buffs", _states)
 
 func _on_area_2d_buff_signaled(_buff: buff) -> void:
 	add_buff(_buff)

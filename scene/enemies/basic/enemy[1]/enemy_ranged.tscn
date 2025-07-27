@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://b4oruv1prbkjp"]
 
-[ext_resource type="Script" path="res://script/enemies/basic/enemy[1]/ranged_enemy_movement.gd" id="1_cg3bc"]
+[ext_resource type="Script" uid="uid://py28rmcgoasd" path="res://script/enemies/basic/enemy[1]/ranged_enemy_movement.gd" id="1_cg3bc"]
 [ext_resource type="Texture2D" uid="uid://c3voijdpvps3j" path="res://icon.svg" id="2_syswm"]
 [ext_resource type="PackedScene" uid="uid://clwjvj5cxto6n" path="res://scene/ui/health_bar.tscn" id="3_3bfxn"]
-[ext_resource type="Script" path="res://script/utility/state_machine.gd" id="5_dshsp"]
-[ext_resource type="Script" path="res://script/state/approach.gd" id="6_6ym4q"]
-[ext_resource type="Script" path="res://script/state/shoot.gd" id="7_1uewj"]
-[ext_resource type="Script" path="res://script/state/retreat.gd" id="7_rqh6f"]
-[ext_resource type="Script" path="res://script/state/still.gd" id="9_21dbo"]
+[ext_resource type="Script" uid="uid://e8skkwnda6rd" path="res://script/utility/state_machine.gd" id="5_dshsp"]
+[ext_resource type="Script" uid="uid://bwibmjtxrfq3e" path="res://script/state/approach.gd" id="6_6ym4q"]
+[ext_resource type="Script" uid="uid://dbkffjm78tknm" path="res://script/state/shoot.gd" id="7_1uewj"]
+[ext_resource type="Script" uid="uid://b1nbxmkvg8fff" path="res://script/state/retreat.gd" id="7_rqh6f"]
+[ext_resource type="Script" uid="uid://dm5poyymlowq3" path="res://script/state/still.gd" id="9_21dbo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enexm"]
 

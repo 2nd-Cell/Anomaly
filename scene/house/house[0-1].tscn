@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=4 uid="uid://cvcewitu35m1f"]
 
 [ext_resource type="Texture2D" uid="uid://bfga1k6b01mmf" path="res://ui/sprites/RPG-Files (1)/fsm_C_Inside01n_A2_1.png" id="1_01y17"]
-[ext_resource type="Script" path="res://script/house/house[0_1].gd" id="1_lyl5t"]
+[ext_resource type="Script" uid="uid://dfoay045npxec" path="res://script/house/house[0_1].gd" id="1_lyl5t"]
 [ext_resource type="Texture2D" uid="uid://w37kfwektqmd" path="res://ui/sprites/RPG-Files (1)/fsm_C_Inside01n_A5_1.png" id="2_q55bd"]
 [ext_resource type="Texture2D" uid="uid://b66885gbq8iyd" path="res://ui/sprites/RPG-Files/pika_nos_tiles01_C.png" id="3_j2e3j"]
 [ext_resource type="Texture2D" uid="uid://jekdo2gxgixg" path="res://ui/sprites/RPG-Files (1)/fsm_C_Inside01n_E.png" id="4_jgvxc"]

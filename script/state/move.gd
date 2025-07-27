@@ -32,6 +32,7 @@ func physics_update(delta: float):
 	Global.player_position = $"../..".position
 	
 	var spd = (SPEED + $"../../buff_machine".calc_buff("SPEED"))
+	print(spd)
 	$"../..".velocity = direction * spd
 #
 	$"../..".move_and_slide()

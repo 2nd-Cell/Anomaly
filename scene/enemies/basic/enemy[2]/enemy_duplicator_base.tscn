@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cxb04n5ri85n0"]
 
-[ext_resource type="Script" path="res://script/enemies/basic/enemy[2]/enemy_duplicator.gd" id="1_2q30n"]
+[ext_resource type="Script" uid="uid://dw25u1whkqkm0" path="res://script/enemies/basic/enemy[2]/enemy_duplicator.gd" id="1_2q30n"]
 [ext_resource type="Texture2D" uid="uid://c3voijdpvps3j" path="res://icon.svg" id="2_l588k"]
 [ext_resource type="PackedScene" uid="uid://clwjvj5cxto6n" path="res://scene/ui/health_bar.tscn" id="3_gh8as"]
-[ext_resource type="Script" path="res://script/utility/state_machine.gd" id="4_psde6"]
-[ext_resource type="Script" path="res://script/state/pursue.gd" id="5_g6n4v"]
+[ext_resource type="Script" uid="uid://e8skkwnda6rd" path="res://script/utility/state_machine.gd" id="4_psde6"]
+[ext_resource type="Script" uid="uid://byski73x7uqc3" path="res://script/state/pursue.gd" id="5_g6n4v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kbee"]
 

@@ -1,17 +1,17 @@
 [gd_scene load_steps=13 format=3 uid="uid://cvjfl1fdyg1s8"]
 
-[ext_resource type="Script" path="res://script/utility/state_machine.gd" id="1_taywt"]
-[ext_resource type="Script" path="res://script/world_state/play.gd" id="2_f8p1x"]
+[ext_resource type="Script" uid="uid://e8skkwnda6rd" path="res://script/utility/state_machine.gd" id="1_taywt"]
+[ext_resource type="Script" uid="uid://dnap51naoy01b" path="res://script/world_state/play.gd" id="2_f8p1x"]
 [ext_resource type="PackedScene" uid="uid://cvjfl1fdyg1s8" path="res://scene/chapter/prologue.tscn" id="3_4p6bl"]
-[ext_resource type="Script" path="res://script/world_state/title.gd" id="3_w8sh0"]
-[ext_resource type="Script" path="res://script/world_state/menu.gd" id="4_mt5sm"]
-[ext_resource type="Script" path="res://script/world_state/weapon.gd" id="5_34ypy"]
-[ext_resource type="Script" path="res://script/world_state/equipment.gd" id="6_j8tuv"]
-[ext_resource type="Script" path="res://script/world_state/item.gd" id="7_6l0gu"]
-[ext_resource type="Script" path="res://script/world_state/stat.gd" id="8_4i51t"]
-[ext_resource type="Script" path="res://script/world_state/option.gd" id="9_x1kp5"]
-[ext_resource type="Script" path="res://script/world_state/exit.gd" id="10_lyifi"]
-[ext_resource type="Script" path="res://script/world_state/menu_impl.gd" id="11_5m18y"]
+[ext_resource type="Script" uid="uid://b5glbdaoat85s" path="res://script/world_state/title.gd" id="3_w8sh0"]
+[ext_resource type="Script" uid="uid://bfn0j37suh5n4" path="res://script/world_state/menu.gd" id="4_mt5sm"]
+[ext_resource type="Script" uid="uid://bml3b570sx4km" path="res://script/world_state/weapon.gd" id="5_34ypy"]
+[ext_resource type="Script" uid="uid://cl3ygoi1gg2m6" path="res://script/world_state/equipment.gd" id="6_j8tuv"]
+[ext_resource type="Script" uid="uid://6x7e1qlhfkvc" path="res://script/world_state/item.gd" id="7_6l0gu"]
+[ext_resource type="Script" uid="uid://cky3bfn4sucvs" path="res://script/world_state/stat.gd" id="8_4i51t"]
+[ext_resource type="Script" uid="uid://byropmi65wr6l" path="res://script/world_state/option.gd" id="9_x1kp5"]
+[ext_resource type="Script" uid="uid://dvtxld32ht7jt" path="res://script/world_state/exit.gd" id="10_lyifi"]
+[ext_resource type="Script" uid="uid://bcfbck8tbdth0" path="res://script/world_state/menu_impl.gd" id="11_5m18y"]
 
 [node name="world" type="Node2D"]
 
@@ -85,6 +85,11 @@ layout_mode = 2
 text = "stat"
 alignment = 0
 
+[node name="save" type="Button" parent="state_machine/menu/menu_impl/VBoxContainer"]
+layout_mode = 2
+text = "save"
+alignment = 0
+
 [node name="option" type="Button" parent="state_machine/menu/menu_impl/VBoxContainer"]
 layout_mode = 2
 text = "option"
@@ -100,6 +105,7 @@ alignment = 0
 [connection signal="pressed" from="state_machine/menu/menu_impl/VBoxContainer/item" to="state_machine/menu/menu_impl" method="_on_item_pressed"]
 [connection signal="pressed" from="state_machine/menu/menu_impl/VBoxContainer/stat" to="state_machine" method="_on_stat_pressed"]
 [connection signal="pressed" from="state_machine/menu/menu_impl/VBoxContainer/stat" to="state_machine/menu/menu_impl" method="_on_stat_pressed"]
+[connection signal="pressed" from="state_machine/menu/menu_impl/VBoxContainer/save" to="state_machine/menu/menu_impl" method="_on_save_pressed"]
 [connection signal="pressed" from="state_machine/menu/menu_impl/VBoxContainer/option" to="state_machine/menu/menu_impl" method="_on_option_pressed"]
 [connection signal="pressed" from="state_machine/menu/menu_impl/VBoxContainer/exit" to="state_machine" method="_on_exit_pressed"]
 [connection signal="pressed" from="state_machine/menu/menu_impl/VBoxContainer/exit" to="state_machine/menu/menu_impl" method="_on_exit_pressed"]

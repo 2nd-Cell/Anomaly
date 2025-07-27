@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://beejd3pd6d7sf"]
 
-[ext_resource type="Script" path="res://script/screen/home_screen.gd" id="1_6jsc1"]
+[ext_resource type="Script" uid="uid://c500hebsgilh" path="res://script/screen/home_screen.gd" id="1_6jsc1"]
 [ext_resource type="Texture2D" uid="uid://cf7kp56m52n0w" path="res://ui/background/2206_w023_n003_2471b_p1_2471.jpg" id="2_qf7my"]
 [ext_resource type="FontFile" uid="uid://cxafw8qu7hslx" path="res://ui/font/peach_days/Peach Days.ttf" id="3_xunpj"]
 [ext_resource type="StyleBox" uid="uid://cnwwpbpgc3hj6" path="res://ui/button/btn normal.tres" id="4_dlvhq"]

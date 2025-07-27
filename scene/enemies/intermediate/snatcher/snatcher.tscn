@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://dhs7e0mikoiax"]
 
-[ext_resource type="Script" path="res://script/enemies/intermediate/snatcher/snatcher.gd" id="1_xgibk"]
+[ext_resource type="Script" uid="uid://dc6ykimbhag3i" path="res://script/enemies/intermediate/snatcher/snatcher.gd" id="1_xgibk"]
 [ext_resource type="Texture2D" uid="uid://c3voijdpvps3j" path="res://icon.svg" id="2_cu7ky"]
 [ext_resource type="PackedScene" uid="uid://clwjvj5cxto6n" path="res://scene/ui/health_bar.tscn" id="3_5mp36"]
-[ext_resource type="Script" path="res://script/utility/state_machine.gd" id="4_n7q7l"]
-[ext_resource type="Script" path="res://script/state/approach.gd" id="5_o7eg6"]
-[ext_resource type="Script" path="res://script/state/target.gd" id="6_8kyar"]
-[ext_resource type="Script" path="res://script/state/tackle.gd" id="7_68msy"]
-[ext_resource type="Script" path="res://script/state/wait.gd" id="8_wj74k"]
+[ext_resource type="Script" uid="uid://e8skkwnda6rd" path="res://script/utility/state_machine.gd" id="4_n7q7l"]
+[ext_resource type="Script" uid="uid://bwibmjtxrfq3e" path="res://script/state/approach.gd" id="5_o7eg6"]
+[ext_resource type="Script" uid="uid://bgxfvy3f8f011" path="res://script/state/target.gd" id="6_8kyar"]
+[ext_resource type="Script" uid="uid://dv7oyi1jnvaj7" path="res://script/state/tackle.gd" id="7_68msy"]
+[ext_resource type="Script" uid="uid://b0j5rqp0jd5tk" path="res://script/state/wait.gd" id="8_wj74k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kbee"]
 
@@ -43,8 +43,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x8105"]
 _data = {
-"RESET": SubResource("Animation_kct2f"),
-"targetting": SubResource("Animation_0euow")
+&"RESET": SubResource("Animation_kct2f"),
+&"targetting": SubResource("Animation_0euow")
 }
 
 [node name="snatcher" type="CharacterBody2D"]

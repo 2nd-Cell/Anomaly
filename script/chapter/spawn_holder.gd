@@ -19,6 +19,7 @@ var wave_enemies = 0
 func _ready():
 	add_to_group("spawner", true)
 	get_tree().call_group("wavetimer", "set_time", 3)
+	print("foooo")
 	#spawn_enemies(1)
 
 func run_timer(time: int) -> void:
