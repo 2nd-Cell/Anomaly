@@ -14,7 +14,7 @@ func update(delta: float):
 	
 func physics_update(delta: float):
 	
-	if Input.is_action_just_pressed("escape"):
+	if Input.is_action_just_pressed("menu"):
 		transitioned.emit(self, next_state)
 
 func _on_weapon_pressed() -> void:

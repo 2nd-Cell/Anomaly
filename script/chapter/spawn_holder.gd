@@ -57,7 +57,6 @@ func spawn_enemies(num: int)->void:
 		#This is just a fast way to create a timer similar to wait in python
 		await get_tree().create_timer(2.0).timeout
 	
-	
 func _on_interval_timeout() -> void:
 	current_level+=1
 	get_tree().call_group("waveCounter", "set_wave_num", current_level)

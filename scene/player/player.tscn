@@ -92,8 +92,9 @@ shape = SubResource("CapsuleShape2D_pohnm")
 script = ExtResource("5_igr0g")
 initial_state = NodePath("move")
 
-[node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("initial_state")]
+[node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("next_state", "initial_state")]
 script = ExtResource("6_emebl")
+next_state = NodePath("../pause")
 initial_state = NodePath("player_shoot")
 
 [node name="player_shoot" type="Node" parent="state_machine/move" node_paths=PackedStringArray("firing_position")]

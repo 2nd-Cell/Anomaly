@@ -15,5 +15,5 @@ func update(delta: float):
 func physics_update(delta: float):
 	super(delta)
 	
-	if Input.is_action_just_pressed("pause"):
-		transitioned.emit(self, next_state)
+	#if Input.is_action_just_pressed(""):
+		#transitioned.emit(self, next_state)

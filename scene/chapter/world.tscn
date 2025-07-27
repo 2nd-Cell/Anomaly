@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvjfl1fdyg1s8"]
+[gd_scene load_steps=13 format=3 uid="uid://cvjfl1fdyg1s8"]
 
 [ext_resource type="Script" path="res://script/utility/state_machine.gd" id="1_taywt"]
 [ext_resource type="Script" path="res://script/world_state/play.gd" id="2_f8p1x"]
+[ext_resource type="PackedScene" uid="uid://cvjfl1fdyg1s8" path="res://scene/chapter/prologue.tscn" id="3_4p6bl"]
 [ext_resource type="Script" path="res://script/world_state/title.gd" id="3_w8sh0"]
 [ext_resource type="Script" path="res://script/world_state/menu.gd" id="4_mt5sm"]
 [ext_resource type="Script" path="res://script/world_state/weapon.gd" id="5_34ypy"]
@@ -16,11 +17,13 @@
 
 [node name="state_machine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_taywt")
-initial_state = NodePath("play")
+initial_state = NodePath("menu")
 
 [node name="play" type="Node" parent="state_machine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("2_f8p1x")
 next_state = NodePath("../menu")
+
+[node name="Prologue" parent="state_machine/play" instance=ExtResource("3_4p6bl")]
 
 [node name="title" type="Node" parent="state_machine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("3_w8sh0")
